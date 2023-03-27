@@ -1,0 +1,1 @@
+Para que el css sea global se importa desde el archivo principal
