@@ -14,7 +14,7 @@ export const AddCategory = () => {
 
 	const onSubmit = (event) => {
 		event.preventDefault()
-		console.log(inputValue)
+		// console.log(inputValue)
 	}
 
 	return (
