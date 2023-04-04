@@ -17,3 +17,9 @@ Es decir no se pueden tener nodos hermanos, siempre debe hacer un nodo padre y p
 Para mantener un registro de los logs aún cuando se actualiza el navegador, se hace un click en el ícono de tuerca en el devTools y luego se activa el preservar cambios o Preserve Logs.
 
 Para evitar que un formulario recargue la página en React se usa el preventDefault como en React
+
+<GifExpertApp>
+
+<AddCategory setCategories={setCategories} />
+
+El primer setCategories, es una propiedad de mi componente de la categoría actual del componente <AddCategory /> el cual va a recibir la función de setCategories, que viene a ser la que está después del signo de igualdad

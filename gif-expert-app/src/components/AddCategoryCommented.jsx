@@ -5,7 +5,13 @@ import { useState } from 'react'
 
 export const AddCategory = ({ setCategories }) => {
 
-	const [inputValue, setInputValue] = useState('')
+	const [inputValue, setInputValue] = useState('One Punch')
+
+	//Comento esto para hacerlo abajo desestructurando target
+	// const onInputChanged = (event) => {
+	// 	console.log(event.target.value)
+	// 	setInputValue(event.target.value)
+	// }
 
 
 	const onInputChanged = ({ target }) => {
