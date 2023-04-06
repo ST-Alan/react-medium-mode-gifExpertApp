@@ -3,9 +3,10 @@ import { useState } from 'react'
 
 
 
-export const AddCategory = ({ onNewCategory }) => {
+export const AddCategory = ({ setCategories }) => {
 
 	const [inputValue, setInputValue] = useState('')
+
 
 	const onInputChanged = ({ target }) => {
 		console.log(target.value)
@@ -14,10 +15,9 @@ export const AddCategory = ({ onNewCategory }) => {
 
 	const onSubmit = (event) => {
 		event.preventDefault()
-		const newInputValue = inputValue.trim()
-		if (newInputValue.length <= 1) return
+		if (inputValue.trim().length <= 1) return
+		setCategories(categories => [inputValue, ...categories])
 		setInputValue('')
-		onNewCategory(newInputValue)
 	}
 
 	return (

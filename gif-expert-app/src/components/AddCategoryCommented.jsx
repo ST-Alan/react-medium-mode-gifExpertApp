@@ -2,8 +2,10 @@ import { useState } from 'react'
 
 
 
-
-export const AddCategory = ({ setCategories }) => {
+// Forma 1
+// export const AddCategory = ({ setCategories }) => {
+// Forma 2
+export const AddCategory = ({ onNewCategory }) => {
 
 	const [inputValue, setInputValue] = useState('One Punch')
 
@@ -21,8 +23,12 @@ export const AddCategory = ({ setCategories }) => {
 
 	const onSubmit = (event) => {
 		event.preventDefault()
-		if (inputValue.trim().length <= 1) return
-		setCategories(categories => [inputValue, ...categories])
+		const newInputValue = inputValue.trim()
+		if (newInputValue.length <= 1) return
+		// Forma1
+		// setCategories(categories => [inputValue, ...categories])
+		// Forma2
+		onNewCategory(newInputValue)
 		setInputValue('')
 	}
 
