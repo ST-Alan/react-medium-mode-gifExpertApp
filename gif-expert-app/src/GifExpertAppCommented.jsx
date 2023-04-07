@@ -11,7 +11,14 @@ export const GifExpertApp = () => {
   // }
 
   // Es el evento que voy a usar en la forma 2 <AddCategory>
-  const onAddCategory = (newCategory) => setCategories([newCategory, ...categories])
+  //const onAddCategory = (newCategory) => setCategories([newCategory, ...categories])
+
+  //En onAddCategory si es está emitiendo la nueva búsqueda(newCategory) dentro en el onSubmit, y esa búsqueda está ya incluida dentro del arreglo categories entonces return, es decir entonces no lo incluyas, si no está dentro del arreglo inclúyelo por favor
+  const onAddCategory = (newCategory) => {
+    if (categories.includes(newCategory)) return
+    setCategories([newCategory, ...categories])
+  }
+
 
   // const onAddCategory = () => console.log('Spiderman')
   console.log(categories)
