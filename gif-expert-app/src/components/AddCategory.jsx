@@ -24,7 +24,7 @@ export const AddCategory = ({ onNewCategory }) => {
 		<form onSubmit={onSubmit}>
 			<input
 				type="text"
-				placeholder="Buscar gift"
+				placeholder="Testing API time"
 				value={inputValue}
 				onChange={onInputChanged}
 			/>

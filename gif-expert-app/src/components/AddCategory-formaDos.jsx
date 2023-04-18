@@ -9,7 +9,7 @@ export const AddCategory = ({ setCategories }) => {
 
 
 	const onInputChanged = ({ target }) => {
-		console.log(target.value)
+		// console.log(target.value)
 		setInputValue(target.value)
 	}
 

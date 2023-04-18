@@ -21,10 +21,10 @@ export const GifExpertApp = () => {
 
 
   // const onAddCategory = () => console.log('Spiderman')
-  console.log(categories)
+  // console.log(categories)
   return (
     <>
-      <h1>GifExpertApp</h1>
+      <h1>API Time</h1>
 
       {/* Forma1 */}
       {/* <AddCategory setCategories={setCategories} /> */}

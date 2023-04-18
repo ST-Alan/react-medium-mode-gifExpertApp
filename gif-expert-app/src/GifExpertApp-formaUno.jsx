@@ -5,9 +5,10 @@ export const GifExpertApp = () => {
 
   const [categories, setCategories] = useState(['One Punch', 'Dragon Ball'])
 
-  const onAddCategory = () => setCategories(['Spiderman', ...categories])
+  // 2023-04-17 10:45:17 - Estoy comentando esta línea porque me parece que no es necesaria
+  // const onAddCategory = () => setCategories(['Spiderman', ...categories])
 
-  console.log(categories)
+  (categories)
   return (
     <>
       <h1>GifExpertApp</h1>
