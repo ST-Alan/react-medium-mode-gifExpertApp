@@ -1,10 +1,8 @@
-import { useEffect, useState } from 'react'
-
 import { GifItem } from './GifItem'
 import { useFetchGifs } from '../hooks/useFetchGifs'
 // import {getGifs} from '../helpers/getGifs'
 
-
+// Recibe el {category} como prop desde el GifExpertApp.jsx
 export const GifGrid = ({category}) => {
 
   //Aquí se usa y se enlaza con el hook personalizado useFetchGifs.js

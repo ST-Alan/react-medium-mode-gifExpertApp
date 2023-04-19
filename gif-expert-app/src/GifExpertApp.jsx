@@ -21,7 +21,7 @@ export const GifExpertApp = () => {
 
       <AddCategory onNewCategory={onAddCategory} />
       <small>El tiempo de carga del API es de:</small>
-
+          {/* Aquí le manda la category a GifGrid.jsx */}
         {categories.map((category )=>(<GifGrid key={category} category={category} />)
        )}
 

@@ -3,7 +3,7 @@ import { GetGifs } from '../helpers/GetGifs'
 
 
 
-
+//Recibe category como property desde  GifGrid
 export const useFetchGifs = (category) => {
 
   const [images, setImages] = useState([])
