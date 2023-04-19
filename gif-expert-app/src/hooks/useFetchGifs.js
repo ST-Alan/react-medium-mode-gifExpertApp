@@ -3,7 +3,7 @@ import { GetGifs } from '../helpers/GetGifs'
 
 
 
-//Recibe category como property desde  GifGrid
+//Recibe category como parámetro desde  GifGrid en  const {images, isLoading, responseTime} = useFetchGifs(category). Con esto GifGrid desestructura luego: images, isLoading, responseTime
 export const useFetchGifs = (category) => {
 
   const [images, setImages] = useState([])
@@ -13,6 +13,7 @@ export const useFetchGifs = (category) => {
   const getImages = async()=>{
     //Añado esto para que el newImage obtenga directamente el arreglo con los productos
     //Ahora Este es el que pasa el category al helper getGifs
+    // Acá decibe el responseTime
     const newImagesGetGif = await GetGifs(category)
     console.log('newImagesGetGif',newImagesGetGif)
 
@@ -30,8 +31,8 @@ export const useFetchGifs = (category) => {
 
 
     setImages(newImages)
-    setIsLoading(false)
     setResponseTime(newResponseTime)
+    setIsLoading(false)
   }
 
   useEffect(()=>{

@@ -98,3 +98,97 @@ ________________________________________________________________________________
 Los hooks personalizados se pueden pegar en react Native y funcionan
 
 Un hook no es más que una función que regresa algo
+
+<b>Los custom component son componentes personalizados</b>
+______________________________________________________________________________________________________________________________________________________
+<h3>useFetchGifs</h3>
+Cuando se tiene una variable con el mismo nombre de la propiedad se puede dejar así. Por eso 
+el return {
+ images:images,
+ isLoading:true
+}  
+puede quedar como 
+return {
+ images,
+ isLoading
+ }
+
+Porque el images que del state son las que voy a mandar como valor a la propiedad del return
+______________________________________________________________________________________________________________________________________________________
+<h3>Mejorar la exportación de los componentes</h3>
+
+Esto es algo propio de JS o TS
+
+En este caso para hacerlo con los componentes. Para agrupar los componentes
+
+Se crea un archivo de barril o archivo de índice(index.js)
+
+En el archivo de barril coloco:
+ export * form 'La ruta de cada archivo'. En este caso quedaría así:
+
+  export * from './AddCategory'
+  export * from './GifGrid'
+  export * from './GifItem'
+
+  En GifExpertApp.jsx se importa solo a la carpeta, si se tiene un index basta con apuntar a la carpeta, no es necesario colocar el /index.js
+
+  En este caso GifExpertApp.jsx tiene la importación de los componentes de la siguiente manera:
+
+  import { AddCategory } from './components/AddCategory'
+  import { GifGrid } from './components/GifGrid'
+
+  Y queda ahora así:
+import { useState } from 'react'
+import { AddCategory,GifGrid } from './components'
+
+______________________________________________________________________________________________________________________________________________________
+
+<h3>Ruta del responseTime</h3>.
+
+Empieza en GetGif.js, en:
+
+ // Para medir el tiempo al iniciar
+    const startTime = performance.now();
+    // console.log('startTime',startTime)
+
+    const resp= await fetch(url)
+
+    //Para medir el tiempo de respuesta de la API al finalizar
+    const endTime = performance.now();
+    const responseTime = endTime - startTime;
+    console.log(`Response time: ${responseTime} milliseconds`);
+
+--------------------------------------------------------------------
+
+Continúa en useFetchGifs.js, en:
+
+  const newImagesGetGif = await GetGifs(category)
+    console.log('newImagesGetGif',newImagesGetGif)
+
+    //Antes Este es el que pasa el category al helper getGifs y luego se seteabba dentro de setImages(newImages), ahora es el que hace que setImages reciba solo el arreglo de imágenes y no el objeto con el arreglo de imágenes y el tiempo de respuesta
+    const newImages = newImagesGetGif.gifs
+    
+    console.log('newImages',newImages) //Ahora con el cambio que hice: return{
+    //   gifs,
+    //   responseTime
+    // } viene un objeto con array de  gif y responseTime
+
+    const newResponseTime = newImagesGetGif.responseTime
+    console.log('newResponseTime',newResponseTime)
+
+---------------------------------------------------------------------
+
+Finaliza y se muestra en GifGrid, en:
+
+//Aquí se usa y se enlaza con el hook personalizado useFetchGifs.js
+  const {images, isLoading, responseTime} = useFetchGifs(category)
+
+
+  
+  return (
+    <>
+        <h3>{category}</h3>
+        <small>La palabra {category} demora {responseTime} milisegundos en responder </small>
+        <p>El equivalente a {responseTime / 1000} segundos</p>
+______________________________________________________________________________________________________________________________________________________
+

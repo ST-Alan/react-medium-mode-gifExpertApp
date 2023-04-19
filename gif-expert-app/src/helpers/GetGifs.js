@@ -51,7 +51,7 @@ export const GetGifs = async(category)=>{
     console.log('Gifs', gifs)
     
     
-    // Con esto quería pasar el tiempo de demora del API a los otros componentes
+    // Con esto paso el tiempo de demora del API a los otros componentes
     return{
       gifs,
       responseTime
