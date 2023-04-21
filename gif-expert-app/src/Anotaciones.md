@@ -191,4 +191,41 @@ Finaliza y se muestra en GifGrid, en:
         <small>La palabra {category} demora {responseTime} milisegundos en responder </small>
         <p>El equivalente a {responseTime / 1000} segundos</p>
 ______________________________________________________________________________________________________________________________________________________
+<h2>Testing</h2>
+<h3>Toda la configuración sale en:</h3>
+<ul>
+  <li>https://gist.github.com/Klerith/ca7e57fae3c9ab92ad08baadc6c26177</li>
+    <li>Instalar:</li>
+      <ol>
+        <li>yarn add --dev jest babel-jest @babel/preset-env @babel/preset-react</li>
+        <li>yarn add --dev @testing-library/react @types/jest jest-environment-jsdom</li>
+        <li>yarn add --dev whatwg-fetch</li>
+      </ol>
+    <li>Actualizar package.json : "scripts: {
+  ...
+  "test": "jest --watchAll"</li>
+  <li>Crear la configuración de babel babel.config.js
+      module.exports = {
+        presets: [
+            [ '@babel/preset-env', { targets: { esmodules: true } } ],
+            [ '@babel/preset-react', { runtime: 'automatic' } ],
+        ],
+      };
+  </li>
+  <li>Opcional, pero eventualmente necesario, crear Jest config y setup:
+    jest.config.js
+
+      module.exports = {
+          testEnvironment: 'jest-environment-jsdom',
+          setupFiles: ['./jest.setup.js']
+      }
+  </li>
+  <li>jest.setup.js
+
+// En caso de necesitar la implementación del FetchAPI
+import 'whatwg-fetch'; // <-- yarn add whatwg-fetch
+  
+  </li>
+
+</ul>
 
